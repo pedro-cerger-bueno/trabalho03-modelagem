@@ -47,7 +47,7 @@ public class Teste {
     }
 }
 
-/* 
+/* exemplo dado pelo professor:
 package decorator.funcionario;
 
 public class Teste
