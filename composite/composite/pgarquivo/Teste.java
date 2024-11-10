@@ -40,42 +40,40 @@ public class Teste {
         Elemento t3 = new ArquivoSistema("t3");
 
         try {
-        P_1_1_1.adicionar(a1);
-        P_1_1_1.adicionar(a2);
-        P_1_1_1.adicionar(a3);
-
-        P_1_1_2.adicionar(b1);
-        P_1_1_2.adicionar(b2);
-        P_1_1_2.adicionar(b3);
-        
-        P_1_2_1.adicionar(c1);
-        P_1_2_1.adicionar(c2);
-        P_1_2_1.adicionar(c3);
-        
-        P_1_2_2.adicionar(d1);
-        P_1_2_2.adicionar(d2);
-        P_1_2_2.adicionar(d3);
-        
-        psistema.adicionar(t1);
-        psistema.adicionar(t2);
-        psistema.adicionar(t3);
-        
-        pasta1_1.adicionar(P_1_1_1);
-        pasta1_1.adicionar(P_1_1_2);
-        
-        pasta1_2.adicionar(P_1_2_1);
-        pasta1_2.adicionar(P_1_2_2);
-
-        pasta1.adicionar(pasta1_1);
-        pasta1.adicionar(pasta1_2);
-
-        praiz.adicionar(pasta1);
-        praiz.adicionar(psistema);   
-        
-        a1.adicionar(a2);
+            P_1_1_1.adicionar(a1);
+            P_1_1_1.adicionar(a2);
+            P_1_1_1.adicionar(a3);
+    
+            P_1_1_2.adicionar(b1);
+            P_1_1_2.adicionar(b2);
+            P_1_1_2.adicionar(b3);
+            
+            P_1_2_1.adicionar(c1);
+            P_1_2_1.adicionar(c2);
+            P_1_2_1.adicionar(c3);
+            
+            P_1_2_2.adicionar(d1);
+            P_1_2_2.adicionar(d2);
+            P_1_2_2.adicionar(d3);
+            
+            psistema.adicionar(t1);
+            psistema.adicionar(t2);
+            psistema.adicionar(t3);
+            
+            pasta1_1.adicionar(P_1_1_1);
+            pasta1_1.adicionar(P_1_1_2);
+            
+            pasta1_2.adicionar(P_1_2_1);
+            pasta1_2.adicionar(P_1_2_2);
+    
+            pasta1.adicionar(pasta1_1);
+            pasta1.adicionar(pasta1_2);
+    
+            praiz.adicionar(pasta1);
+            praiz.adicionar(psistema);   
         
         } catch(MyException e){
-            System.out.println( e.getMessage() );
+            System.out.println( e.getMessage() + "Erro");
         }
         
         return praiz;
