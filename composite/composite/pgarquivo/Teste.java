@@ -1,108 +1,108 @@
-
 package composite.pgarquivo;
 
 import composite.modelo.MyException;
 import composite.modelo.Elemento;
 import composite.modelo.Composicao;
+import composite.modelo.CategoriaRaiz;
+import composite.modelo.Categoria;
+import composite.modelo.CategoriaFolha;
+import composite.modelo.Cereal;
+import composite.modelo.Bebida;
+import composite.modelo.Defumado;
+import composite.modelo.Carne;
+import composite.modelo.Limpeza;
 
 public class Teste {
-    
-    private static Elemento criarInstancias(){
+    public static void main(String[] args) {
         
-        Elemento praiz = new PastaRaiz("praiz");
-        Elemento pasta1 = new Composicao("pasta1");
-        Elemento psistema = new Composicao("psistema");
-        Elemento pasta1_1 = new Composicao("pasta1_1");
-        Elemento pasta1_2 = new Composicao("pasta1_2");
-        Elemento P_1_1_1 = new Composicao("P_1_1_1");
-        Elemento P_1_1_2 = new Composicao("P_1_1_2");
-        Elemento P_1_2_1 = new Composicao("P_1_2_1");
-        Elemento P_1_2_2 = new Composicao("P_1_2_2");
+            // Criação da categoria raiz
+            CategoriaRaiz CRaiz = new CategoriaRaiz("CRaiz");
 
-        Elemento a1 = new ArquivoTexto("a1");
-        Elemento a2 = new ArquivoTexto("a2");
-        Elemento a3 = new ArquivoTexto("a3");
+            // Categoria principal: Comestível
+            Categoria comestivel = new Categoria("comestivel");
 
-        Elemento b1 = new ArquivoBinario("b1");
-        Elemento b2 = new ArquivoBinario("b2");
-        Elemento b3 = new ArquivoBinario("b3");
+            // Subcategoria: Proteína Animal dentro de Comestível
+            Categoria proteinaAnimal = new Categoria("proteinaAnimal");
 
-        Elemento c1 = new ArquivoTexto("c1");
-        Elemento c2 = new ArquivoTexto("c2");
-        Elemento c3 = new ArquivoTexto("c3");
+            // Categoria Diversos
+            Categoria diversos = new Categoria("diversos");
 
-        Elemento d1 = new ArquivoImagem("d1");
-        Elemento d2 = new ArquivoImagem("d2");
-        Elemento d3 = new ArquivoImagem("d3");
-        
-        Elemento t1 = new ArquivoSistema("t1");
-        Elemento t2 = new ArquivoSistema("t2");
-        Elemento t3 = new ArquivoSistema("t3");
+            // Folhas de categoria para Comestível > Proteína Animal
+            CategoriaFolha cereal = new CategoriaFolha("cereal");
+            CategoriaFolha bebida = new CategoriaFolha("bebida");
+            CategoriaFolha defumado = new CategoriaFolha("defumado");
+            CategoriaFolha carne = new CategoriaFolha("carne");
 
-        try {
-            P_1_1_1.adicionar(a1);
-            P_1_1_1.adicionar(a2);
-            P_1_1_1.adicionar(a3);
-    
-            P_1_1_2.adicionar(b1);
-            P_1_1_2.adicionar(b2);
-            P_1_1_2.adicionar(b3);
-            
-            P_1_2_1.adicionar(c1);
-            P_1_2_1.adicionar(c2);
-            P_1_2_1.adicionar(c3);
-            
-            P_1_2_2.adicionar(d1);
-            P_1_2_2.adicionar(d2);
-            P_1_2_2.adicionar(d3);
-            
-            psistema.adicionar(t1);
-            psistema.adicionar(t2);
-            psistema.adicionar(t3);
-            
-            pasta1_1.adicionar(P_1_1_1);
-            pasta1_1.adicionar(P_1_1_2);
-            
-            pasta1_2.adicionar(P_1_2_1);
-            pasta1_2.adicionar(P_1_2_2);
-    
-            pasta1.adicionar(pasta1_1);
-            pasta1.adicionar(pasta1_2);
-    
-            praiz.adicionar(pasta1);
-            praiz.adicionar(psistema);   
-        
-        } catch(MyException e){
-            System.out.println( e.getMessage() + "Erro");
-        }
-        
-        return praiz;
+            // Instâncias de produtos em cada categoria
+            Cereal P1 = new Cereal("P1");
+            Cereal P2 = new Cereal("P2");
+            Cereal P3 = new Cereal("P3");
+
+            Bebida P4 = new Bebida("P4");
+            Bebida P5 = new Bebida("P5");
+            Bebida P6 = new Bebida("P6");
+
+            Defumado P7 = new Defumado("P7");
+            Defumado P8 = new Defumado("P8");
+            Defumado P9 = new Defumado("P9");
+
+            Carne P10 = new Carne("P10");
+            Carne P11 = new Carne("P11");
+            Carne P12 = new Carne("P12");
+
+            // Folha de categoria para Diversos
+            CategoriaFolha limpeza = new CategoriaFolha("limpeza");
+
+            Limpeza L1 = new Limpeza("L1");
+            Limpeza L2 = new Limpeza("L2");
+            Limpeza L3 = new Limpeza("L3");
+
+            // Adiciona categorias à raiz
+            CRaiz.adicionar(comestivel);
+            CRaiz.adicionar(limpeza);
+
+            // Adiciona subcategorias a Comestível
+            comestivel.adicionar(diversos);
+            comestivel.adicionar(proteinaAnimal);
+
+            // Adiciona folhas a Diversos
+            diversos.adicionar(cereal);
+            diversos.adicionar(bebida);
+
+            // Adiciona folhas a Proteína Animal
+            proteinaAnimal.adicionar(defumado);
+            proteinaAnimal.adicionar(carne);
+
+            // Adiciona produtos a Cereal
+            cereal.adicionar(P1);
+            cereal.adicionar(P2);
+            cereal.adicionar(P3);
+
+            // Adiciona produtos a Bebida
+            bebida.adicionar(P4);
+            bebida.adicionar(P5);
+            bebida.adicionar(P6);
+
+            // Adiciona produtos a Defumado
+            defumado.adicionar(P7);
+            defumado.adicionar(P8);
+            defumado.adicionar(P9);
+
+            // Adiciona produtos a Carne
+            carne.adicionar(P10);
+            carne.adicionar(P11);
+            carne.adicionar(P12);
+
+            // Adiciona produtos a Limpeza
+            limpeza.adicionar(L1);
+            limpeza.adicionar(L2);
+            limpeza.adicionar(L3);
+
+            // Exibe a estrutura completa das categorias
+            CRaiz.listar(0);
+
+         /*catch (MyException e) {
+            System.out.println("Erro: " + e.getMessage());
+        }*/
     }
-    
-    public static void main(String [] args){
-        
-        try{
-            Elemento praiz = criarInstancias(); 
-            praiz.listar(0);
-        
-            System.out.println("\n");    
-
-            Elemento t4 = new ArquivoSistema("t4");
-            Elemento filho = praiz.consultar("pasta1_2");
-        
-            filho.adicionar(t4);
-            filho.listar(0);
-            
-            
-            praiz.excluir("pasta1_2");
-            
-            filho = praiz.consultar("praiz");
-            filho.listar(0);
-            filho = praiz.excluir("pasta1_2");
-            filho = praiz.consultar("pasta1_2");
-           
-        } catch(MyException e){
-            System.out.println( e.getMessage() );
-        }
-  }
 }
