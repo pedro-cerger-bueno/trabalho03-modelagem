@@ -1,16 +1,15 @@
-// Interface Estado
 interface Estado {
-    String solicita(Pedido pedido);
-    String cotacao(Pedido pedido);
-    String rejeita(Pedido pedido);
-    String encomenda(Pedido pedido);
-    String cancela(Pedido pedido);
-    String entrega(Pedido pedido);
-    String paga(Pedido pedido);
-    String arquiva(Pedido pedido);
+    String solicita(Pedido pedido) throws IllegalStateException;
+    String cotacao(Pedido pedido) throws IllegalStateException;
+    String rejeita(Pedido pedido) throws IllegalStateException;
+    String encomenda(Pedido pedido) throws IllegalStateException;
+    String cancela(Pedido pedido) throws IllegalStateException;
+    String entrega(Pedido pedido) throws IllegalStateException;
+    String paga(Pedido pedido) throws IllegalStateException;
+    String arquiva(Pedido pedido) throws IllegalStateException;
 }
 
-// Classe Pedido
+
 class Pedido {
     private Estado estado;
 
@@ -55,7 +54,7 @@ class Pedido {
     }
 }
 
-// Estado Solicitado
+
 class Solicitado implements Estado {
     public String solicita(Pedido pedido) {
         return "Solicitado";
@@ -67,34 +66,34 @@ class Solicitado implements Estado {
     }
 
     public String rejeita(Pedido pedido) {
-        return "Ação inválida";
+        throw new IllegalStateException("Ação inválida no estado Solicitado");
     }
 
     public String encomenda(Pedido pedido) {
-        return "Ação inválida";
+        throw new IllegalStateException("Ação inválida no estado Solicitado");
     }
 
     public String cancela(Pedido pedido) {
-        return "Ação inválida";
+        throw new IllegalStateException("Ação inválida no estado Solicitado");
     }
 
     public String entrega(Pedido pedido) {
-        return "Ação inválida";
+        throw new IllegalStateException("Ação inválida no estado Solicitado");
     }
 
     public String paga(Pedido pedido) {
-        return "Ação inválida";
+        throw new IllegalStateException("Ação inválida no estado Solicitado");
     }
 
     public String arquiva(Pedido pedido) {
-        return "Ação inválida";
+        throw new IllegalStateException("Ação inválida no estado Solicitado");
     }
 }
 
-// Estado Cotado
+
 class Cotado implements Estado {
     public String solicita(Pedido pedido) {
-        return "Ação inválida";
+        throw new IllegalStateException("Ação inválida no estado Cotado");
     }
 
     public String cotacao(Pedido pedido) {
@@ -112,34 +111,34 @@ class Cotado implements Estado {
     }
 
     public String cancela(Pedido pedido) {
-        return "Ação inválida";
+        throw new IllegalStateException("Ação inválida no estado Cotado");
     }
 
     public String entrega(Pedido pedido) {
-        return "Ação inválida";
+        throw new IllegalStateException("Ação inválida no estado Cotado");
     }
 
     public String paga(Pedido pedido) {
-        return "Ação inválida";
+        throw new IllegalStateException("Ação inválida no estado Cotado");
     }
 
     public String arquiva(Pedido pedido) {
-        return "Ação inválida";
+        throw new IllegalStateException("Ação inválida no estado Cotado");
     }
 }
 
-// Estado Encomendado
+
 class Encomendado implements Estado {
     public String solicita(Pedido pedido) {
-        return "Ação inválida";
+        throw new IllegalStateException("Ação inválida no estado Encomendado");
     }
 
     public String cotacao(Pedido pedido) {
-        return "Ação inválida";
+        throw new IllegalStateException("Ação inválida no estado Encomendado");
     }
 
     public String rejeita(Pedido pedido) {
-        return "Ação inválida";
+        throw new IllegalStateException("Ação inválida no estado Encomendado");
     }
 
     public String encomenda(Pedido pedido) {
@@ -157,34 +156,34 @@ class Encomendado implements Estado {
     }
 
     public String paga(Pedido pedido) {
-        return "Ação inválida";
+        throw new IllegalStateException("Ação inválida no estado Encomendado");
     }
 
     public String arquiva(Pedido pedido) {
-        return "Ação inválida";
+        throw new IllegalStateException("Ação inválida no estado Encomendado");
     }
 }
 
-// Estado Faturado
+
 class Faturado implements Estado {
     public String solicita(Pedido pedido) {
-        return "Ação inválida";
+        throw new IllegalStateException("Ação inválida no estado Faturado");
     }
 
     public String cotacao(Pedido pedido) {
-        return "Ação inválida";
+        throw new IllegalStateException("Ação inválida no estado Faturado");
     }
 
     public String rejeita(Pedido pedido) {
-        return "Ação inválida";
+        throw new IllegalStateException("Ação inválida no estado Faturado");
     }
 
     public String encomenda(Pedido pedido) {
-        return "Ação inválida";
+        throw new IllegalStateException("Ação inválida no estado Faturado");
     }
 
     public String cancela(Pedido pedido) {
-        return "Ação inválida";
+        throw new IllegalStateException("Ação inválida no estado Faturado");
     }
 
     public String entrega(Pedido pedido) {
@@ -197,34 +196,34 @@ class Faturado implements Estado {
     }
 
     public String arquiva(Pedido pedido) {
-        return "Ação inválida";
+        throw new IllegalStateException("Ação inválida no estado Faturado");
     }
 }
 
-// Estado Pago
+
 class Pago implements Estado {
     public String solicita(Pedido pedido) {
-        return "Ação inválida";
+        throw new IllegalStateException("Ação inválida no estado Pago");
     }
 
     public String cotacao(Pedido pedido) {
-        return "Ação inválida";
+        throw new IllegalStateException("Ação inválida no estado Pago");
     }
 
     public String rejeita(Pedido pedido) {
-        return "Ação inválida";
+        throw new IllegalStateException("Ação inválida no estado Pago");
     }
 
     public String encomenda(Pedido pedido) {
-        return "Ação inválida";
+        throw new IllegalStateException("Ação inválida no estado Pago");
     }
 
     public String cancela(Pedido pedido) {
-        return "Ação inválida";
+        throw new IllegalStateException("Ação inválida no estado Pago");
     }
 
     public String entrega(Pedido pedido) {
-        return "Ação inválida";
+        throw new IllegalStateException("Ação inválida no estado Pago");
     }
 
     public String paga(Pedido pedido) {
@@ -237,114 +236,43 @@ class Pago implements Estado {
     }
 }
 
-// Estado Rejeitado
-class Rejeitado implements Estado {
-    public String solicita(Pedido pedido) {
-        return "Ação inválida";
-    }
 
-    public String cotacao(Pedido pedido) {
-        return "Ação inválida";
-    }
-
-    public String rejeita(Pedido pedido) {
-        return "Rejeitado"; 
-    }
-
-    public String encomenda(Pedido pedido) {
-        return "Ação inválida";
-    }
-
-    public String cancela(Pedido pedido) {
-        return "Ação inválida";
-    }
-
-    public String entrega(Pedido pedido) {
-        return "Ação inválida";
-    }
-
-    public String paga(Pedido pedido) {
-        return "Ação inválida";
-    }
-
-    public String arquiva(Pedido pedido) {
-        pedido.setEstado(new Fim());
-        return "FIM";
-    }
-}
-
-// Estado Cancelado
-class Cancelado implements Estado {
-    public String solicita(Pedido pedido) {
-        return "Ação inválida";
-    }
-
-    public String cotacao(Pedido pedido) {
-        return "Ação inválida";
-    }
-
-    public String rejeita(Pedido pedido) {
-        return "Ação inválida";
-    }
-
-    public String encomenda(Pedido pedido) {
-        return "Ação inválida";
-    }
-
-    public String cancela(Pedido pedido) {
-        return "Cancelado"; 
-    }
-
-    public String entrega(Pedido pedido) {
-        return "Ação inválida";
-    }
-
-    public String paga(Pedido pedido) {
-        return "Ação inválida";
-    }
-
-    public String arquiva(Pedido pedido) {
-        pedido.setEstado(new Fim());
-        return "FIM";
-    }
-}
-
-// Estado Fim
 class Fim implements Estado {
-    public String solicita(Pedido pedido) { return "FIM"; }
-    public String cotacao(Pedido pedido) { return "FIM"; }
-    public String rejeita(Pedido pedido) { return "FIM"; }
-    public String encomenda(Pedido pedido) { return "FIM"; }
-    public String cancela(Pedido pedido) { return "FIM"; }
-    public String entrega(Pedido pedido) { return "FIM"; }
-    public String paga(Pedido pedido) { return "FIM"; }
+    public String solicita(Pedido pedido) { throw new IllegalStateException("Ação inválida no estado FIM"); }
+    public String cotacao(Pedido pedido) { throw new IllegalStateException("Ação inválida no estado FIM"); }
+    public String rejeita(Pedido pedido) { throw new IllegalStateException("Ação inválida no estado FIM"); }
+    public String encomenda(Pedido pedido) { throw new IllegalStateException("Ação inválida no estado FIM"); }
+    public String cancela(Pedido pedido) { throw new IllegalStateException("Ação inválida no estado FIM"); }
+    public String entrega(Pedido pedido) { throw new IllegalStateException("Ação inválida no estado FIM"); }
+    public String paga(Pedido pedido) { throw new IllegalStateException("Ação inválida no estado FIM"); }
     public String arquiva(Pedido pedido) { return "FIM"; }
 }
+
 
 
 public class novoPedido {
     public static void main(String[] args) {
         Pedido p1 = new Pedido();
         
-        String str = p1.solicita(); //solicitado
+        String str = p1.solicita(); 
         System.out.println("p1-Estado : " + str); 
         
-        str = p1.cotacao(); //cotado
+        str = p1.cotacao(); 
         System.out.println("p1-Estado : " + str); 
         
-        str = p1.cotacao(); //cotado sem mudar de estado
+        str = p1.cotacao(); 
         System.out.println("p1-Estado : " + str); 
         
-        str = p1.encomenda(); //encomendado
+        str = p1.encomenda(); 
         System.out.println("p1-Estado : " + str); 
         
-        str = p1.entrega(); //faturado
+        str = p1.entrega(); 
         System.out.println("p1-Estado : " + str); 
         
-        str = p1.paga(); //pago
+        str = p1.paga(); 
         System.out.println("p1-Estado : " + str); 
         
-        str = p1.arquiva(); //fim
+        str = p1.arquiva(); 
         System.out.println("p1-Estado : " + str); 
     }
 }
