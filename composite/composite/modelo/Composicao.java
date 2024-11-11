@@ -6,85 +6,71 @@ import java.util.Stack;
 
 public class Composicao extends Elemento {
 
-	public ArrayList<Elemento> elemento;
-     
-        public Composicao(String nm){
-            super(nm);
-            this.elemento = new ArrayList();
+    private ArrayList<Elemento> elementos;
+
+    public Composicao(String nome) {
+        super(nome);
+        this.elementos = new ArrayList<>();
+    }
+
+    @Override
+    public boolean adicionar(Elemento d) {
+        return adicionarElemento(d);
+    }
+
+    private boolean adicionarElemento(Elemento d) {
+        elementos.add(d);
+        d.pertenceA(this);
+        return true;
+    }
+
+    @Override
+    public Elemento consultar(String nome) throws MyException {
+        return consultarElemento(nome);
+    }
+
+    private Elemento consultarElemento(String nome) throws MyException {
+        for (Elemento e : elementos) {
+            if (e.getNome().equals(nome)) {
+                return e;
+            }
+            if (e instanceof Composicao) {
+                try {
+                    return ((Composicao) e).consultarElemento(nome);
+                } catch (MyException ignored) {}
+            }
         }
+        throw new MyException("Elemento não encontrado: " + nome);
+    }
 
-        @Override
-	public boolean adicionar(Elemento d) {
-            this.elemento.add( d );
-            d.pertenceA( this );
-            return false;
-	}
+    @Override
+    public Elemento excluir(String nome) throws MyException {
+        return excluirElemento(nome);
+    }
 
-        @Override
-	public Elemento consultar(String nm) throws MyException {
-
-            Iterator<Elemento> itE = this.elemento.iterator();
-            Stack<Elemento> pilha = new Stack();
-            
-            if (itE.hasNext()){
-                pilha.add(this);
+    private Elemento excluirElemento(String nome) throws MyException {
+        Iterator<Elemento> iterator = elementos.iterator();
+        while (iterator.hasNext()) {
+            Elemento e = iterator.next();
+            if (e.getNome().equals(nome)) {
+                iterator.remove();
+                return e;
             }
-                       
-            Elemento ptr = null;
-            while (!pilha.isEmpty()){
-                ptr = pilha.pop();      
-                if (ptr.nome.equals(nm)){
-                    return ptr;
-                }else{
-                    if (ptr instanceof Composicao){
-                        Iterator<Elemento> it = ((Composicao)ptr).elemento.iterator();
-                        while (it.hasNext()){
-                            pilha.push(it.next());                        
-                        }
-                    }
-                }
+            if (e instanceof Composicao) {
+                try {
+                    return ((Composicao) e).excluirElemento(nome);
+                } catch (MyException ignored) {}
             }
-            throw new MyException("Elemento não encontrado : op->consulta");
-	}
-
-        @Override
-	public Elemento excluir(String nm) throws MyException {
-            
-           Iterator<Elemento> itE = this.elemento.iterator();
-           Stack<Elemento> pilha = new Stack();
-            
-            if (itE.hasNext()){
-                pilha.add(this);
-            }
-                       
-            ArrayList<Elemento> ptrA = this.elemento;
-            String ptrAnome = null;
-            Elemento ptr  = this;
-            while (!pilha.isEmpty()){
-                ptr = pilha.pop();      
-                if (ptr.nome.equals(nm)){
-                    if (ptr.pertenceA != null){
-                        ((Composicao)ptr.pertenceA).elemento.remove(ptr);
-                    }
-                    return ptr;
-                }else{
-                    if (ptr instanceof Composicao){
-                        Iterator<Elemento> it = ((Composicao)ptr).elemento.iterator();
-                        while (it.hasNext()){
-                            pilha.push(it.next());                        
-                        }
-                    }
-                }
-            }
-            throw new MyException("Elemento não encontrado : op->excluir");
         }
+        throw new MyException("Elemento não encontrado para exclusão: " + nome);
+    }
 
-        @Override
-	public void listar(int nivel) {
-            tabular(nivel);
-            System.out.println(this.nome);
-            for (Elemento e : this.elemento){
-                e.listar(nivel + 1);
-            }
-	}
+    @Override
+    public void listar(int nivel) {
+        tabular(nivel);
+        System.out.println("Composição: " + this.nome);
+        for (Elemento e : elementos) {
+            e.listar(nivel + 1);
+        }
+    }
 }
